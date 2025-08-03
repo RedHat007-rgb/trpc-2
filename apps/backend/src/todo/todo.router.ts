@@ -10,11 +10,7 @@ export class TodoRouter {
     return this.todoService.getAllTodo();
   }
   @Mutation({ input: zTodo, output: zTodo })
-  createTodo(@Input() input): Promise<Todo> {
+  createTodo(@Input() input: Todo): Promise<Todo> {
     return this.todoService.createTodo(input);
-  }
-  @Mutation()
-  updateTodo(@Input() input): Promise<Todo> {
-    return this.todoService.updateTodo(input);
   }
 }

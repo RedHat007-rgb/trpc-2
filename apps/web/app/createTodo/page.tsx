@@ -10,18 +10,19 @@ const CreateTodo = () => {
   const createTodo = trpc.todoRouter.createTodo.useMutation();
 
   const onClickHandler = () => {
-    if (!title.current?.value || !description.current?.value) {
+    if (!title.current?.value) {
       setError("please dont leave empty fields");
       return;
     }
     const newTodo = {
       title: title.current?.value,
-      description: description.current?.value,
+      description: description.current?.value || "",
       done: done,
     };
 
     createTodo.mutate(newTodo);
   };
+
   return (
     <div>
       <input ref={title} placeholder="title" />
